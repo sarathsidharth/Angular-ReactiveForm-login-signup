@@ -10,12 +10,6 @@
                 <mat-error>This field is Mandatory</mat-error>
             </mat-form-field>
             
-            <mat-form-field class="full-width">
-                <mat-label>Email*</mat-label>
-                <input matInput formControlName="name" value="name" id="name">
-                <mat-error>This field is Mandatory</mat-error>
-            </mat-form-field>
-
             <div class="full-width">
                 <mat-label>Gender :</mat-label>
                 <mat-radio-group formControlName="gender">
@@ -29,6 +23,13 @@
                 <mat-label>Email*</mat-label>
                 <input matInput formControlName="email">
                 <mat-error>Invalid email address.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Phone*</mat-label>
+                <input matInput value="phone" id="phone" formControlName="phone">
+                <mat-error *ngIf="signupform.controls.phone.errors?.required">This field is Mandatory</mat-error>
+                <mat-error *ngIf="signupform.controls.phone.errors?.pattern">invalid phone number</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="full-width">
