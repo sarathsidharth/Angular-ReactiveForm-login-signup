@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/service/register.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   hide=true;
   
-  constructor(private fb:FormBuilder,private service:RegisterService) { }
+  constructor(private fb:FormBuilder,private service:RegisterService,private router:Router) { }
   signupform=this.fb.group({
     name: new FormControl([""],Validators.required),
     gender: new FormControl([""]),
@@ -27,8 +28,12 @@ export class SignupComponent implements OnInit {
     if(this.signupform.valid){
       console.log(this.signupform.value)
       this.service.postuser(this.signupform.value)
-      .subscribe((data)=>{alert('user Registered succesfully ')},
-      (err)=>{alert('data registration failed'+err)})
+      .subscribe((data)=>{
+        alert('user Registered succesfully ');
+        this.signupform.reset();
+        this.router.navigate(['login'])
+    },
+      (err)=>{alert('something went wrong !!'+err)})
     }
   }
 
