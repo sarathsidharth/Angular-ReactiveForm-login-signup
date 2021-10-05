@@ -10,12 +10,16 @@ import { MaterialModule } from './module/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './component/welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PageNotFoundComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,
